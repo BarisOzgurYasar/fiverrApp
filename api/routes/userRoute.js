@@ -1,9 +1,9 @@
 import express from 'express';
-import { login, register } from '../controllers/authController.js';
+import { deleteUser } from '../controllers/userController.js';
+import { verifyToken } from '../middleware/jwt.js';
 
 const router = express.Router();
 
-router.get('/register');
-router.get('/login');
+router.delete('/:id', verifyToken, deleteUser);
 
 export default router;
